@@ -1,15 +1,66 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Car Detail</title>
-</head>
-<body>
+
+
+
+{% extends "base.html" %} 
+
+{% block title %}Car Detail{% endblock title %} 
+
+{% block content %}
+
+
+
+
+
+    <h1 class="display-3" style="text-align: center;"> Car Detail </h1>
+
+<br>
+
+
+        <div class="jumbotron jumbotron-fluid center">
+  <div class="container">
+   
+
 		<h1>
 			{{car.make}} - {{car.model}}
 			<small>
+				<br>
 				{{car.year}}
 			</small>
 		</h1>
-		<hr>
-</body>
-</html>
+
+  </div>
+</div>
+
+<br>
+
+	{% if car.car_img %}
+
+		<div >
+
+ 			     	<div class="card__image-container">
+
+		        <div class="demo">
+
+             		 <img class= "center" src ="{{car.car_img.url}}">
+
+            	<div class="show-off"> </div>
+
+        </div>
+
+        </div>
+
+
+    {% endif %}
+
+
+
+
+
+            <a href="{% url 'car-update' car.id %}" class="btn btn-outline-primary btn-block">Update</a>
+        </div>
+       
+            <a href="{% url 'car-delete' car.id %}" class="btn btn-outline-danger btn-block">Delete</a>
+      
+    </div>
+
+{% endblock content %}
